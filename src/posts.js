@@ -11,6 +11,7 @@ import {
     ReferenceInput,
     SelectInput,
     TextInput,
+    SimpleList,
 } from 'react-admin';
 
 const postFilters = [
@@ -22,14 +23,10 @@ const postFilters = [
 
 export const PostList = props => (
     <List filters={postFilters} {...props}>
-        <Datagrid>
-            <TextField source="id" />
-            <ReferenceField source="userId" reference="users">
-                <TextField source="name" />
-            </ReferenceField>
-            <TextField source="title" />
-            <EditButton />
-        </Datagrid>
+        <SimpleList
+            primaryText={record => record.title}
+            secondaryText={record => `${record.views} views`}
+        />
     </List>
 );
 
